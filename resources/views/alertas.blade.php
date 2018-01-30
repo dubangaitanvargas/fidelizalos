@@ -151,6 +151,7 @@
 		    	url: '/alertas',
 		    	data: parameters,
 
+
 		    	//data: { condicion: "ejecutarFuncion"},
 		    	success:function(resultado){
 		       // imprime "resultado Funcion"
