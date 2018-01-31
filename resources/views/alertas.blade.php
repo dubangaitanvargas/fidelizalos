@@ -52,8 +52,8 @@
 				<div class="col-md-4">
 					<div class="col-md-10">
 						<label>Fecha Compra:</label>
-					<div class='input-group date' data-provide="datepicker" id='datepicker'>
-                    	<input type='text' class="form-control" />
+					<div class='input-group date' data-provide="datepicker">
+                    	<input type='text' class="form-control"  value="" id='datepicker'/>
                     	<span class="input-group-addon">
                         	<span class="glyphicon glyphicon-calendar"></span>
                     	</span>
@@ -63,8 +63,8 @@
                 	<br>
                 	<div class="col-md-10">
 						<label>Fecha Vencimiento:</label>				
-					<div class='input-group date' data-provide="datepicker" id='datepicker'>
-                    	<input type='text' class="form-control" />
+					<div class='input-group date' data-provide="datepicker" >
+                    	<input type='text' class="form-control" value="" id='datepicker2' />
                     	<span class="input-group-addon">
                         	<span class="glyphicon glyphicon-calendar"></span>
                     	</span>
@@ -129,12 +129,17 @@
 	        }
 	    });
 
-		$('.datepicker').datepicker({
-		});
+	    $('#datepicker').val('<?php echo date("d/m/Y"); ?>');
+
+	    $('#datepicker2').val('<?php echo date("d/m/Y", strtotime("+1 year")); ?>');
+			
+
 
 		function inhabilitado(){
 			 alert('Esta es una version de prueba, por el momento esta funcion esta inhabilitada');
 		}
+
+
 
 		function sendSms(phone, namecli){
 			
