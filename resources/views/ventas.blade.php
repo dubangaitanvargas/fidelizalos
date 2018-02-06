@@ -18,7 +18,7 @@
 			@endforeach
 		@endif
 		<label>	<input type="checkbox" name="recosms" value="Recordatorio Sms"> Recordatorio SMS</label>
-		<label>	<input type="checkbox" name="recoemail" value="Recordatorio Correo" >Recordatorio Email ?</label>
+		<label>	<input type="checkbox" name="recoemail" value="Recordatorio Correo" >Recordatorio Email</label>
 		<label>Tipo de Producto</label>
 		<input type="text" name="tipoproduc" class="form-control">
 
