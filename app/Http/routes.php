@@ -13,7 +13,11 @@
 
 Route::get('/login', 'pagesController@login');
 
-Route::get('/', 'alertasController@alertas');
+Route::get('/', 'pagesController@home');
+
+Route::get('/ventas', 'ventasController@home');
+
+Route::post('/ventas/create', 'ventasController@create');
 
 Route::get('/alertas', 'alertasController@alertas');
 
