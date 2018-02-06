@@ -129,11 +129,23 @@
 	        }
 	    });
 
-	    $('#datepicker').val('<?php echo date("d/m/Y"); ?>');
+	    $('#datepicker').val('<?php echo date("m/d/Y"); ?>');
+	    /*function datapickerToday(){
+	    };*/
 
-	    $('#datepicker2').val('<?php echo date("d/m/Y", strtotime("+1 year")); ?>');
+	    $('#datepicker2').val('<?php echo date("m/d/Y", strtotime("+1 year")); ?>');
 			
+		/*function dateinputVenci(){
+			//date = <?php $date = mktime(0,0,0, date("m"),   date("d"),   date("Y")+1); ?>
+		}*/
 
+		/*$.datepicker.setDefaults($.datepicker.regional["es"]);*/
+		/*$( "#datepicker" ).datepicker({ defaultDate: new Date() });*/
+    	/*$("#datepicker").datepicker({	}).datepicker("setDate", new Date());*/
+		$('.datepicker').datepicker({
+			"setDate": new Date(),
+        	"autoclose": true
+		});
 
 		function inhabilitado(){
 			 alert('Esta es una version de prueba, por el momento esta funcion esta inhabilitada');
