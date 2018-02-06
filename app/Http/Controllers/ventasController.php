@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\cliente;
 use App\Http\Requests;
+use App\Http\Requests\createVentasRequest;
 
 class ventasController extends Controller
 {
@@ -16,12 +17,7 @@ class ventasController extends Controller
     	]);
     }
 
-    public function create(Request $request){
-
-    	$this->validate($request, [
-    			'cliente' => 'requiere'
-
-    		]);
+    public function create(createVentasRequest $request){
 
     	return 'Bien!';
     }
