@@ -6,6 +6,29 @@
 <form action="/ventas/create" method="post">
 	<div class="form-group @if ($errors->has('cliente')) has-danger @endif">
 		{{ csrf_field() }}
+
+		<label>Tipo de Producto</label>
+		<select class="form-control" name="tipoproduc">
+			<option>Seleccione</option>
+			<option>SOAT</option>
+			<option>Tecnomecanica.</option>
+			<option>Licencia De Conduccion</option>
+		</select>
+
+		@if ($errors->has('tipoproduc'))
+			@foreach ($errors->get('tipoproduc') as $error)
+				<div class="form-control-feeback"> {{ $error }}</div>
+			@endforeach
+		@endif
+
+		<label>Cliente</label>
+		<input type="text" name="nombreclie" class="form-control">
+		@if ($errors->has('nombreclie'))
+			@foreach ($errors->get('nombreclie') as $error)
+				<div class="form-control-feeback"> {{ $error }}</div>
+			@endforeach
+		@endif
+
 		<label> Fecha Venta</label>
 		<input type="date" name="fechVenta" class="form-control">
 		<label> Fecha Vencimiento</label>
@@ -23,17 +46,15 @@
 			@endforeach
 		@endif
 
-		<label>	<input type="checkbox" name="recosms" value="Recordatorio Sms"> Recordatorio SMS</label>
-		<label>	<input type="checkbox" name="recoemail" value="Recordatorio Correo" >Recordatorio Email</label>
-		<label>Tipo de Producto</label>
-		<input type="text" name="tipoproduc" class="form-control">
-		@if ($errors->has('tipoproduc'))
-			@foreach ($errors->get('tipoproduc') as $error)
-				<div class="form-control-feeback"> {{ $error }}</div>
-			@endforeach
-		@endif
+		<label>	<input type="checkbox" name="recosms" value="Sms"> Recordatorio SMS</label>
+		<br>
+		<label>	<input type="checkbox" name="recoemail" value="Correo" >Recordatorio Email</label>
 
-		<input type="submit" name="">
+		<br>
+
+		<input class="btn btn-success" type="submit" name="" value="Aceptar">
+
+		<input class="btn btn-info" type="submit" name="" value="Limpiar">
 
 
 	</div>

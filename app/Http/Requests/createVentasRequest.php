@@ -25,8 +25,8 @@ class createVentasRequest extends Request
     {
         return  [
                 'docrefe' => ['required', 'max:3'],
-                'fechVenc' => ['required'],
-                'tipoproduc' => ['required']
+                'fechVenc' => ['required']
+                /*'tipoproduc' => ['required']*/
 
             ];
     }
@@ -37,8 +37,8 @@ class createVentasRequest extends Request
 
                     'docrefe.required' => 'Por favor escribe el Documento de referencia',
                     'docrefe.max' => 'El numero de documento de referencia no puede superar los 120 caracteres',
-                    'fechVenc.required' => 'La fecha de Vencimiento es Requerida',
-                    'tipoproduc.required' => 'El tipo de producto es Requerido'
+                    'fechVenc.required' => 'La fecha de Vencimiento es Requerida'
+                    /*'tipoproduc.required' => 'El tipo de producto es Requerido'*/
 
             ];
     }
