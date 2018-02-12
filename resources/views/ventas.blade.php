@@ -73,7 +73,7 @@
 
 @endsection
 
-@section('scripts')
+@section('scripts')  
 	
 	<script type="text/javascript">
 		new Vue({
