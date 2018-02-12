@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\cliente;
+use App\tipoProducto;
 use App\venta;
 use App\Http\Requests;
 use App\Http\Requests\createVentasRequest;
@@ -13,8 +14,10 @@ class ventasController extends Controller
 {
     public function home(){
     	$clientes = cliente::all();
+        $tipoProductos = tipoProducto::all();
     	return view('ventas', [
-    		'clientes' => $clientes
+    		'clientes' => $clientes,
+            'tipoProductos' =>  $tipoProductos
     	]);
     }
 
@@ -32,5 +35,7 @@ class ventasController extends Controller
     			'Negocios_idNegocios' => '1'
 
     		]);
+
+    	return ('VentaCreda');
     }
 }

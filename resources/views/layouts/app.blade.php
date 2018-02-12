@@ -89,9 +89,9 @@
                         <li>
                             <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li-->
-                        <!--li>
+                        <li>
                             <a href="/ventas"><i class="fa fa-table fa-fw"></i> Ventas</a>
-                        </li-->
+                        </li>
                         <li>
                             <a href="/alertas"><i class="fa fa-edit fa-fw"></i>Alertas</a>
                         </li>

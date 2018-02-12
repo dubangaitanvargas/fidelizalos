@@ -3,16 +3,15 @@
 
 @section('content')
 
-<form action="/ventas/create" method="post">
+<form action="/ventas/create" method="post" id="app">
 	<div class="form-group @if ($errors->has('cliente')) has-danger @endif">
 		{{ csrf_field() }}
 
 		<label>Tipo de Producto</label>
 		<select class="form-control" name="tipoproduc">
-			<option>Seleccione</option>
-			<option>SOAT</option>
-			<option>Tecnomecanica.</option>
-			<option>Licencia De Conduccion</option>
+			@foreach ( $tipoProductos as $tipoProducto)
+				<option> {{ $tipoProducto->NombreTipoProducto }} </option>
+			@endforeach
 		</select>
 
 		@if ($errors->has('tipoproduc'))
@@ -30,9 +29,14 @@
 		@endif
 
 		<label> Fecha Venta</label>
-		<input type="date" name="fechVenta" class="form-control">
+		<div class='input-group date' data-provide="datepicker">
+        	<input type='text' class="form-control"  value="" id='datepicker'/>
+        	<span class="input-group-addon">
+            	<span class="glyphicon glyphicon-calendar"></span>
+        	</span>
+        </div>
 		<label> Fecha Vencimiento</label>
-		<input type="date" name="fechVenc" class="form-control">
+		<input type="input" name="fechVenc" class="form-control">
 		@if ($errors->has('fechVenc'))
 			@foreach ($errors->get('fechVenc') as $error)
 				<div class="form-control-feeback"> {{ $error }}</div>
@@ -54,7 +58,7 @@
 
 		<input class="btn btn-success" type="submit" name="" value="Aceptar">
 
-		<input class="btn btn-info" type="submit" name="" value="Limpiar">
+		<input class="btn btn-danger" type="button" name="" value="Cancelar">
 
 
 	</div>
@@ -67,4 +71,32 @@
 
 @endforeach
 
+@endsection
+
+@section('scripts')
+	
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+		  	data: {
+		  		date: ''
+	  		},
+	  		mounted: function() {
+			    var args = {
+			        format: 'DD/MM/YYYY'
+		    	};
+		        this.$nextTick(function() {
+		            $('#datepicker').datetimepicker(args)
+		        });
+
+		       	this.$nextTick(function() {
+		        	$('.time-picker').datetimepicker({
+		            format: 'LT'
+		          	})
+		       	});
+		    }
+		}
+
+
+    </script>
 @endsection
