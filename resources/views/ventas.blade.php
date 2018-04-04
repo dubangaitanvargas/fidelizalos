@@ -480,6 +480,7 @@
 		            // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
 		    		var $fech = $('#datepickercli').val();
 		            axios.post('/client/create', {
+		            	numidenti : this.numidenti,
 		            	nombrecliemodal : this.nomclie,
 		            	direccion : this.dirclie,
 		            	phone1 : this.tel1clie,
@@ -492,12 +493,13 @@
 			        	response => {
 			        		this.nombrecliente = response.data['nombre'];
 			        		this.id = response.data['id'];
+			        		this.identif = response.data['numIdentificacion'];
 
-		        	})
-		        	.catch(
+		        	});
+		        	/*.catch(
 		        		errors => {
 		        			console.log(error)
-					});
+					});*/
 
 		        	event.target.reset();
 		        	$('#modaladd').modal('toggle');

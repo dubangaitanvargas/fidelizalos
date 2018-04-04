@@ -47,6 +47,7 @@ class clienteController extends Controller
 	   	/*var_dump($request->all()['email']);exit();*/
 
 	   	$cliente = cliente::create([
+	   		'numIdentificacion' => $request->all()['numidenti'],
 	   		'nombresClientes'  => $request->all()['nombrecliemodal'],
 			'celular1'  => $request->all()['phone1'],
 			'celular2'  => $request->all()['phone2'],
@@ -56,7 +57,8 @@ class clienteController extends Controller
 			
 	   	]);
 			return response()->json(['id' =>$cliente->id,
-				'nombre' => $cliente->nombresClientes
+				'nombre' => $cliente->nombresClientes,
+				'numIdentificacion' => $cliente->numIdentificacion
 		]);
 	}
 
