@@ -32,85 +32,35 @@
 	    <!--/modal -->
 
 	<div>
-		Generar Alertas
+		<label><input type="checkbox" name="allselect"> Seleccionar todos </label>
 	</div>
 	<div class="col-md-12 col-offset-2" style="margin-top: 40px;">
-		<div class="row">
-
-				<div class="col-md-4">
-					<div class="col-md-3" style="padding: 0px;" >
-						<label style="font-size: 18px;"> Producto </label>
-					</div>
-					<form>	
-					<div class="col-md-6" id="radioButton">
-						<input type="radio" name="producto" value="SOAT ">SOAT <br>	
-						<input type="radio" name="producto" value="TecnicoMecanica ">TecnicoMecanica <br>	
-						<input type="radio" name="producto" value="Licencia ">Licencia <br>	
-					</div>
-					</form>
-				</div>
-				<div class="col-md-4">
-					<div class="col-md-10">
-						<label>Fecha Compra:</label>
-					<div class='input-group date' data-provide="datepicker">
-                    	<input type='text' class="form-control"  value="" id='datepicker'/>
-                    	<span class="input-group-addon">
-                        	<span class="glyphicon glyphicon-calendar"></span>
-                    	</span>
-                	</div>
-                	</div>
-                	<br>
-                	<br>
-                	<div class="col-md-10">
-						<label>Fecha Vencimiento:</label>				
-					<div class='input-group date' data-provide="datepicker" >
-                    	<input type='text' class="form-control" value="" id='datepicker2' />
-                    	<span class="input-group-addon">
-                        	<span class="glyphicon glyphicon-calendar"></span>
-                    	</span>
-                	</div>
-                	</div>
-				</div>
+		<div>
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col"></th>
+			      <th scope="col" style="width: 50%;">Nombre</th>
+			      <th scope="col">Telefono</th>
+			      <th scope="col">Fecha</th>
+			      <th scope="col">TipoProducto</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	@foreach ( $clientes as $cliente)
+			  		<tr>
+				      <th scope="row"><input type="checkbox" name="{{ $cliente->id }}"></th>
+				      <td> {{ $cliente->nombresClientes }}</td>
+				      <td>{{ $cliente->celular1 }}</td>
+				      <td>
+				      	<input type="button" name="" class="btn btn-primary" value="Enviar">
+				      	<input type="button" name="" class="btn btn-secondary" value="Editar">
+				      </td>
+				    </tr>
+			  	@endforeach
+			  </tbody>
+			</table>
 		</div>
-		<br>
-		<br>
-
-		<div class="row" >
-			<label style="font-size: 18px;">Cliente</label>
-			<div class="form-group" style="margin-left: 20px" style="border: 2px solid black; border-radius: 10px;">
-				<div class="row">
-					<div class="col-lg-8 col-md-8 col-xm-8">
-						<div class="input-group">
-							<label class="input-group-addon" for="namecli">Nombres:</label>
-							<input type="text" class="form-control" aria-describedby="basic-addon1" id="namecli">
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-8 col-md-8 col-xm-8">
-						<div class="input-group">
-							<label class="input-group-addon" for="number">Numero Celular:</label>
-							<input type="text" class="form-control" aria-describedby="basic-addon1" id="number">
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-8 col-md-8 col-xm-8">
-						<div class="input-group">
-							<label class="input-group-addon" for="email">Email:</label>
-							<input type="text" class="form-control" aria-describedby="basic-addon1" id="email">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<button class="btn btn-secondary" onclick="sendSms($('#number').val(), $('#namecli').val());" >Enviar SMS</button>
-		<button class="btn btn-primary" onclick="inhabilitado();" >Guardar</button>
-		<button class="btn btn-danger" onclick="inhabilitado();" >Salir</button>
-	</div>
 
 
 

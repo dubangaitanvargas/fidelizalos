@@ -13,12 +13,34 @@
 
 Route::get('/login', 'pagesController@login');
 
-Route::get('/', 'pagesController@home');
+/*Route::get('/', 'pagesController@home')->middleware('auth');*/
+Route::get('/', 'ventasController@home')->middleware(['auth', 'authNegocio']);
 
-Route::get('/ventas', 'ventasController@home');
+Route::get('/ventas', 'ventasController@home')->middleware(['auth', 'authNegocio']);
 
-Route::post('/ventas/create', 'ventasController@create');
+Route::post('/ventas/create', 'ventasController@create')->middleware(['auth', 'authNegocio']);
 
-Route::get('/alertas', 'alertasController@alertas');
+Route::post('/ventas/recarg', 'ventasController@home')->middleware(['auth', 'authNegocio']);
 
-Route::post('/alertas', 'alertasController@sendsms');
+Route::post('/ventas/obtfechVenc', 'ventasController@obtfechVenc')->middleware(['auth', 'authNegocio']);
+
+Route::get('/ventas/list', 'ventasController@list')->middleware(['auth', 'authNegocio']);
+
+Route::post('/alert/only', 'alertasController@sendsms')->middleware(['auth', 'authNegocio']);
+
+
+Route::get('/selectNego', 'pagesController@selectNego')->middleware('auth');
+
+Route::get('/logout/negocioDefect', 'pagesController@negocioDefect')->middleware('auth');
+
+Route::post('/selectNegocio', 'pagesController@selectNegocio')->middleware('auth');
+
+Route::post('/client/create', 'clienteController@create');
+
+Route::post('/client/createp', 'clienteController@createp');
+
+Route::post('/client/search', 'clienteController@search');
+
+Route::post('/client/searchList', 'clienteController@searchList');
+
+Route::auth();

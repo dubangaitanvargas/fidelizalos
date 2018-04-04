@@ -1,147 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <meta name="description" content="">
+    
     <meta name="author" content="">
-    <!--meta name="csrf-token" content="{{ Session::token() }}"-->
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
+    <link rel="icon" href="images/favicon.ico">
+    
+    <title>Fidelizalos</title>
 
-    <title> @yield('title' , 'Recuerdame')</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ URL::asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 
-    <!-- Bootstrap Core CSS -->
-    <!--link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="{{ URL::asset('css/font-awesome.css') }}" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="{{ URL::asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+    @yield('sectionstyle')
 
-    <!-- Custom CSS -->
-    <link href="{{ URL::asset('dist/css/sb-admin-2.css') }}" rel="stylesheet">
+    <style type="text/css">
 
-    <!-- Morris Charts CSS -->
-    <link href="{{ URL::asset('vendor/morrisjs/morris.css') }}" rel="stylesheet">
+        .labelNegoSize{
+            font-size: 16px;
+        }
 
-    <!-- Custom Fonts -->
-    <link href="{{ URL::asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        .labelUserSize{
+            font-size: 10px;
+        }
+    </style>
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!--Datepicker-bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-
-    <link href="{{ URL::asset('css/bootstrap-grid.min.css') }}" rel="stylesheet" type="text/css">
 </head>
+<body id="all">
+    <div class="container-fluid" id="wrapper">
+        <div class="row" id="menu">
 
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Recuerdame</a>
-            </div>
-            <!-- /.navbar-header -->
-            <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="/login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+            <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+                <h1 class="site-title"><a href="/"><em class="fa fa-rocket"></em> Fidelizalos</a></h1>
+                @if (Auth::guest())
+                    
+                @else
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+                    <ul class="nav nav-pills flex-column sidebar-nav">
+                        <!--li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li-->
+                        <!--li class="nav-item"><a class="nav-link" href="/ventas"><em class="fa fa-calendar-o"></em>Nueva Venta</a></li-->
+                        <!--li class="nav-item"><a class="nav-link" href="/alertas"><em class="fa fa-bar-chart"></em> Alerta</a></li-->
+                        <div class="nav-item"><a class="nav-link" href="/alertas" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Ventas </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="top:auto; padding: 0px; width: 100%;">
+                                <li class="nav-item"><a class="nav-link" href="/ventas">Nueva</a></li>
+                                <li class="pointerCur"><a class="nav-link dropdown-item" href="/ventas/list">Listar</a></li>
+                                <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
                             </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li-->
-                        <li>
-                            <a href="/ventas"><i class="fa fa-table fa-fw"></i> Ventas</a>
-                        </li>
-                        <li>
-                            <a href="/alertas"><i class="fa fa-edit fa-fw"></i>Alertas</a>
-                        </li>
+                        </div>
+                        <!--li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li-->
+                        <!--li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li-->
                     </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">@yield('titlecontent')</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-                <div class="col-md-12">
-                     @yield('content')
-                </div>
-            </div>
+                    <!--a class="logout-button" onclick="logout();"><em class="fa fa-power-off"></em> Salir</a-->
+                @endif 
+            </nav>
+
+
+
+            @if (Auth::guest())
+
+                <main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+                    <header class="page-header row justify-center">
+                        <div class="col-md-6 col-lg-8" >
+                            <h1 class="float-left text-center text-md-left">Ingresar</h1>
+                        </div>
+                        
+                   
+                        <div class="clear"></div>
+                    </header>
+                    
+                    <section class="row">
+                        <div class="col-sm-12">
+                            <section class="row">
+                                @yield('content')
+                            </section>
+                        </div>
+                    </section>
+                </main>
+            @else
+            <main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+                <header class="page-header row justify-center">
+                    <div class="col-md-6 col-lg-8" >
+                        <h1 class="float-left text-center text-md-left"> @yield('titlecontent')</h1>
+                    </div>
+                    
+                    <div  class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <!--img src="images/profile-pic.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto"-->
+                        
+                        <div class="" >
+                            <span class="labelNegoSize">{{ Auth::user()->negocio->nombreNegocios }}</span>
+                            <h6 class="text-muted labelUserSize">{{ Auth::user()->name }}</h6>
+                        </div>
+                        </a>
+                        
+                        <div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><!--a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a-->
+                             <!--a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em>Configuracion</a-->
+                             <a class="dropdown-item" href="/selectNego"><em class="fa fa-industry mr-1"></em>Cambiar de Negocio</a>
+                             <a class="dropdown-item" onclick="logout();" v-model="salir" href="/logout"><em class="fa fa-power-off mr-1"></em>Salir</a>
+                         </div>
+                    </div>
+               
+                    <div class="clear"></div>
+                </header>
+                
+                <section class="row">
+                    <div class="col-sm-12">
+                        <section class="row" style="">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="" style="margin-left: 20px;">
+                                @yield('content')
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+            @endif
         </div>
-        <!-- /#page-wrapper -->
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.es.min.js"></script>
-    <!--script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
-    <!--<script src="../js/bootstrap.min.js"></script-->
-    <script src=" {{ URL::asset('js/bootstrap.bundle.min.js') }}"></script>
-    <!--script type="text/javascript" href="https://code.jquery.com/jquery-3.3.1.min.js"></script-->
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script-->
-    <script src=" {{ URL::asset('vendor/jquery/jquery.min.js ') }}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src=" {{ URL::asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src=" {{ URL::asset('vendor/metisMenu/metisMenu.min.js ') }}"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src=" {{ URL::asset('vendor/raphael/raphael.min.js') }}"></script>
-    <script src=" {{ URL::asset('vendor/morrisjs/morris.min.js') }}"></script>
-    <script src=" {{ URL::asset('data/morris-data.js') }}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src=" {{ URL::asset('dist/js/sb-admin-2.js') }}"></script>
+    <!--<div class="" >
+        <section class="row">
+            <div class="col-sm-12 offset-sm-4">
+                <section class="row" style="">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="offset-sm-2">
+                           <footer class="blockquote-footer">Someone famous in<cite title="Source Title">Source Title</cite></footer>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ URL::asset('dist/js/bootstrap.min.js') }}"></script>
+    <script src=" {{ URL::asset('js/vue/axios.js') }}"></script>
+    <script src=" {{ URL::asset('js/vue/vue.js') }}"></script>
+    <script src=" {{ URL::asset('js/moment.js') }}"></script>
+
+
+    <script src="{{ URL::asset('js/chart.min.js') }}"></script>
+    <script src="{{ URL::asset('js/chart-data.js') }}"></script>
+    <script src="{{ URL::asset('js/easypiechart.js') }}"></script>
+    <script src="{{ URL::asset('js/easypiechart-data.js') }}"></script>
+    <script src="{{ URL::asset('js/datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <!--script src="{{ URL::asset('js/datepicker/jquery-ui.min.js') }}"></script-->
+    <script src="{{ URL::asset('js/custom.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script>
+        window.onload = function () {
+    var chart1 = document.getElementById("line-chart").getContext("2d");
+    window.myLine = new Chart(chart1).Line(lineChartData, {
+    responsive: true,
+    scaleLineColor: "rgba(0,0,0,.2)",
+    scaleGridLineColor: "rgba(0,0,0,.05)",
+    scaleFontColor: "#c5c7cc"
+    });
+};
+
+
+   
+    </script>
+
+
     @yield('scripts')
+        
+        <script>
+            //function alert(){}
+            function logout(){
+                $.ajax({
+                  type: "GET",
+                  url: "/logout/negocioDefect",
+                });
 
-
-</body>
-
+               /* $.ajax({
+                    type:"POST",
+                    url: "/logout"
+                })*/
+            }
+        </script>
+    
+      </body>
 </html>
