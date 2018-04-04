@@ -157,7 +157,7 @@ class ventasController extends Controller
         ##var_dump($request->all()['tipoproduct']->$prod);exit();
     }
 
-    public function list(){
+    public function listVent(){
 
         $result = venta::where('negocios_idNegocios', (Auth::user()->Negocios_idNegocios))->get();
         return view('listventas',[
