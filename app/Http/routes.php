@@ -24,7 +24,7 @@ Route::post('/ventas/recarg', 'ventasController@home')->middleware(['auth', 'aut
 
 Route::post('/ventas/obtfechVenc', 'ventasController@obtfechVenc')->middleware(['auth', 'authNegocio']);
 
-Route::get('/ventas/list', 'ventasController@list')->middleware(['auth', 'authNegocio']);
+Route::get('/ventas/list', 'ventasController@listVent')->middleware(['auth', 'authNegocio']);
 
 Route::post('/alert/only', 'alertasController@sendsms')->middleware(['auth', 'authNegocio']);
 
