@@ -78,7 +78,7 @@ class alertasController extends Controller
         } else {
           $this->saveenvio('1', $consult->id, '1');
           return response()->json([
-            'success' => 'Mensajes Enviado al numero ' . $to
+            'success' => 'Mensajes Enviado al numero $57 ' . $consult->cliente->celular1
           ]);
         }
 

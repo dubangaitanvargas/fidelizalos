@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\cliente;
+use App\negocio;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\createClientRequest;
 
 class clienteController extends Controller
 {
-	
-   public function create(createClientRequest $request){
+
+	public function cliente(){
+		$negocio = negocio::all();
+
+		return view('cliente', [
+			'negocios' => $negocio,
+            'user' => Auth::user()
+		]);
+	}
+
+	public function create(createClientRequest $request){
 	   	$user = Auth::user();
 	   	if ($user->negocio->ifMuestraSexo)
 		{
@@ -58,13 +68,9 @@ class clienteController extends Controller
 	   	]);
 			return response()->json(['id' =>$cliente->id,
 				'nombre' => $cliente->nombresClientes,
-				'numIdentificacion' => $cliente->numIdentificacion
+				'numIdentificacion' => $cliente->numIdentificacion,
+				'success' => 'Cliente registrado'
 		]);
-	}
-
-	public function createp(Request $request){
-		// echo $request;exit();
-		return response()->json(['esto' => 'era?' ]);
 	}
 
 	public function search(Request $request) {

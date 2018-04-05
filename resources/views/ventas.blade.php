@@ -81,7 +81,7 @@
 				@endif
 	        </div>
 	        <div class="input-group inputgro col-md-4 ">
-				<label class="formclie">1 Telefono</label>
+				<label class="formclie">Celular 1</label>
 				<input type="input" name="phone1" class="form-control" v-model="tel1clie">
 				@if ($errors->has('phone1'))
 					@foreach ($errors->get('phone1') as $error)
@@ -90,7 +90,7 @@
 				@endif
 			</div>
 			<div class="input-group inputgro col-md-4 paddFlo">
-				<label class="formclie">2 Telefono</label>
+				<label class="formclie">Celular 2</label>
 				<input type="text" name="phone2" class="form-control" v-model="tel2clie">
 			</div>
 			<div class="input-group inputgro col-md-6">
@@ -106,10 +106,15 @@
 			@if ( $user->negocio->ifMuestraSexo )
 				<div class="input-group inputgro col-md-4 paddFlo">
 					<label class="formclie">Sexo</label>
-					<select name="sex" class="form-control" v-model="sexocli">
+					<div>
+						<input type="radio" value="2" name="" v-model="pickedsex"> Feminino
+						<br>
+						<input type="radio" value="1" name="" v-model="pickedsex"> Masculino
+					</div>
+					<!--select name="sex" class="form-control" v-model="sexocli">
 						<option value="1"> Masculino </option>
 						<option value="2"> Femenino </option>
-					</select>
+					</select-->
 				</div>
 			@endif 
 
@@ -210,7 +215,7 @@
         </div>
         
 		<br>
-		<label class="col-md-2 col-sm-2 dispinlineBlock-leftFloat ">Documento de referencia</label>
+		<label class="col-md-2 col-sm-2 dispinlineBlock-leftFloat ">Referencia</label>
 		<input type="text" name="docrefer" class="col-md-7 form-control inputgro" style="margin-left: 10px;" v-model="docrefer">
 
 		<br>
@@ -221,9 +226,9 @@
 		<br>
 		<br>
 
-		<input class="btn btn-success" type="submit" name="" value="Aceptar">
-
 		<input class="btn btn-danger" type="button"  v-on:click="cancelar" name="" value="Cancelar">
+
+		<input class="btn btn-primary" type="submit" name="" value="Crear">
 
 	</div>
 </form>
@@ -255,7 +260,8 @@
 					tel1clie : '',
 					tel2clie : '',
 					emailclie : '',
-					sexocli : '',
+					//sexocli : '',
+					pickedsex: '',
 					fecclie : '',
 
 
@@ -300,6 +306,9 @@
 		    		if(this.tipoproduc == 0){
 		    			this.tipoproduc = '';
 		    		}
+
+		    		if($)
+
 		            axios.post('/ventas/create', {
 		            	tipoproduct : this.tipoproduc,
 		            	idclient : $idclie,
@@ -323,7 +332,8 @@
 							this.tel1clie = '',
 							this.tel2clie = '',
 							this.emailclie = '',
-							this.sexocli = '',
+							//this.sexocli = '',
+							this.pickedsex = '',
 							this.fecclie = '',
 
 							this.nombrecliente = '',
@@ -470,7 +480,7 @@
 			        	})
 			        	.catch(
 			        		errors => {
-			        			this.nombrecliente = '';
+			        			this.nombrecliente = 'NO EXISTE';
 			        			this.id = '';
 						});
 		    	},
@@ -486,7 +496,8 @@
 		            	phone1 : this.tel1clie,
 		            	phone2 : this.tel2clie,
 		            	email : this.emailclie,
-		            	sex : this.sexocli,
+		            	//sex : this.sexocli,
+		            	sex : this.pickedsex,
 		            	fechNacim : $fech
 		            })
 		        	.then(
@@ -518,7 +529,8 @@
 					this.tel1clie = '',
 					this.tel2clie = '',
 					this.emailclie = '',
-					this.sexocli = '',
+					//this.sexocli = '',
+					this.pickedsex = '',
 					this.fecclie = '',
 					this.nombrecliente = '',
 			    	this.tipoproduc = '0',

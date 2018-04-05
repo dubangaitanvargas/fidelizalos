@@ -61,6 +61,13 @@
                                 <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
                             </div>
                         </div>
+                        <!--div class="nav-item"><a class="nav-link" href="/alertas" href="#" role="button" id="dropdownMenuLinkClient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Clientes </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkClient" style="top:auto; padding: 0px; width: 100%;">
+                                <li class="nav-item"><a class="nav-link" href="/clientes">Nuevo</a></li>
+                                <li class="pointerCur"><a class="nav-link dropdown-item" href="/clientes/list">Listar</a></li>
+                                <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li>
+                            </div>
+                        </div-->
                         <!--li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li-->
                     </ul>

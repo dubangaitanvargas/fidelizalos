@@ -28,7 +28,6 @@ Route::get('/ventas/list', 'ventasController@listVent')->middleware(['auth', 'au
 
 Route::post('/alert/only', 'alertasController@sendsms')->middleware(['auth', 'authNegocio']);
 
-
 Route::get('/selectNego', 'pagesController@selectNego')->middleware('auth');
 
 Route::get('/logout/negocioDefect', 'pagesController@negocioDefect')->middleware('auth');
@@ -36,6 +35,10 @@ Route::get('/logout/negocioDefect', 'pagesController@negocioDefect')->middleware
 Route::post('/selectNegocio', 'pagesController@selectNegocio')->middleware('auth');
 
 Route::post('/client/create', 'clienteController@create');
+
+Route::get('/clientes', 'clienteController@cliente')->middleware(['auth', 'authNegocio']);
+
+Route::post('/clientes/list', 'clienteController@listClien')->middleware(['auth', 'authNegocio']);
 
 Route::post('/client/createp', 'clienteController@createp');
 
