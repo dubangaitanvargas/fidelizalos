@@ -10,7 +10,31 @@
 
 @section('sectionstyle')
 <style>
-	
+	.formclie{
+		margin-right: 15px;
+	}
+	.paddFlo {
+		padding: 0px;
+		float: left;
+	}
+	.noPad-noMarg {
+		padding: 0px;
+		margin: 0px;
+	}
+	div .input-group {
+		margin-left: 10px;
+	}
+
+	.dispinlineBlock-leftFloat{
+		display: inline-block;
+		float:left;
+	}
+	.inputgro {
+		margin-bottom: 20px;
+	}
+	.margin-bottom-15{
+
+	}
 </style>
 @endsection
 
@@ -53,10 +77,7 @@
             </div>
 		</div>
 		<div>
-		  <div>
-			<h4 class="modal-title" id="myModalLabel"> Nuevo Cliente </h4>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	      </div>
+
 	      <div class="modal-body">
 	        <form class="form-group" @submit.prevent="createClient"  id="formclientadd">
 	        	{{ csrf_field() }}
@@ -109,8 +130,11 @@
 				        </div>
 		        	</div>
 				@endif 
-				<div class="modal-footer" >
-		        	<button type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelar">Cancelar</button>
+				<br>
+				<br>
+				<br>
+				<div >
+		        	<button type="button" class="btn btn-danger">Cancelar</button>
 			        <button type="submit" class="btn btn-primary">Crear</button>
 		      	</div>
 	        </form>
@@ -144,7 +168,7 @@
 		            // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
 		    		var $fech = $('#datepickercli').val();
 		            axios.post('/client/create', {
-		            	numidenti : this.numidenti,
+		            	numIdentificacion : this.numidenti,
 		            	nombrecliemodal : this.nomclie,
 		            	direccion : this.dirclie,
 		            	phone1 : this.tel1clie,
@@ -163,6 +187,7 @@
 							$( '#form-success' ).html( successHtml ); 
 							$('#form-success').prop('hidden', false);
 
+							this.numidenti = '',
 							this.nomclie = '',
 							this.dirclie = '',
 							this.tel1clie = '',
@@ -173,13 +198,12 @@
 							this.fecclie = '',
 
 							event.target.reset();
+		        			return response.json();
 		        	})
-		        	.catch(
-		        		function (error) {
+		        	.catch(function (error) {
 		        		if (error.response) {
-		         			console.log(error.response.data);
-
-		         			var errors = error.response.data['errors_form']
+		         			console.log(error.response.data['errors_form']);
+		         			var errors = error.response.data['errors_form'];
 							console.log(errors);
 							errorsHtml = '<div class="alert alert-danger" style="color:#721c24;">Error<ul>';
 

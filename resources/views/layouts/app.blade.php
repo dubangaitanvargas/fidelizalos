@@ -54,20 +54,24 @@
                         <!--li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="/ventas"><em class="fa fa-calendar-o"></em>Nueva Venta</a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="/alertas"><em class="fa fa-bar-chart"></em> Alerta</a></li-->
-                        <div class="nav-item"><a class="nav-link" href="/alertas" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Ventas </a>
+                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Ventas </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="top:auto; padding: 0px; width: 100%;">
                                 <li class="nav-item"><a class="nav-link" href="/ventas">Nueva</a></li>
                                 <li class="pointerCur"><a class="nav-link dropdown-item" href="/ventas/list">Listar</a></li>
                                 <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
                             </div>
                         </div>
-                        <!--div class="nav-item"><a class="nav-link" href="/alertas" href="#" role="button" id="dropdownMenuLinkClient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Clientes </a>
+                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="dropdownMenuLinkClient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-user-o"></em> Clientes </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkClient" style="top:auto; padding: 0px; width: 100%;">
                                 <li class="nav-item"><a class="nav-link" href="/clientes">Nuevo</a></li>
-                                <li class="pointerCur"><a class="nav-link dropdown-item" href="/clientes/list">Listar</a></li>
-                                <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li>
+                                <!--li class="pointerCur"><a class="nav-link dropdown-item" href="/clientes/list">Listar</a></li>
+                                <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
                             </div>
-                        </div-->
+                        </div>
+                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-envelope"></em> Enviados </a>
+                        </div>
+                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em> Parametros </a>
+                        </div>
                         <!--li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li-->
                     </ul>
