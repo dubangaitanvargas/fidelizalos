@@ -51,9 +51,7 @@ class alertasController extends Controller
 
         foreach ($parametros as $key => $parametro) {
           $param = str_replace($key,$parametro, $param);
-          var_dump($param);
         }
-        exit();
 
         $text = $param;
 
