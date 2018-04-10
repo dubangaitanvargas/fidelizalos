@@ -9,9 +9,9 @@
     
     <meta name="author" content="">
     
-    <link rel="icon" href="images/favicon.ico">
-    
-    <title>Fidelizalos</title>
+    <link rel="icon" href="./images/fidelio3.png">
+
+    <title>Fidelio</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -45,7 +45,7 @@
         <div class="row" id="menu">
 
             <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-                <h1 class="site-title"><a href="/"><em class="fa fa-rocket"></em> Fidelizalos</a></h1>
+                <h1 class="site-title"><a href="/"><img src="./images/fidelio2.png" width="100%;" height="60px;"> </a></h1>
                 @if (Auth::guest())
                     
                 @else
@@ -54,15 +54,15 @@
                         <!--li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="/ventas"><em class="fa fa-calendar-o"></em>Nueva Venta</a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="/alertas"><em class="fa fa-bar-chart"></em> Alerta</a></li-->
-                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-bar-chart"></em> Ventas </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="top:auto; padding: 0px; width: 100%;">
+                        <div class="nav-item"><a class="nav-link" href="#" data-toggle="collapse" data-target="#menuventa" data-parent="#sidenav01" class="collapsed"><em class="fa fa-bar-chart"></em> Ventas </a>
+                            <div id="menuventa" class="collapse"  aria-labelledby="dropdownMenuLink" style="top:auto; padding: 0px; width: 100%;">
                                 <li class="nav-item"><a class="nav-link" href="/ventas">Nueva</a></li>
-                                <li class="pointerCur"><a class="nav-link dropdown-item" href="/ventas/list">Listar</a></li>
+                                <li class="pointerCur"><a class="nav-link dropdown-item" href="/ventas-list">Listar</a></li>
                                 <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
                             </div>
                         </div>
-                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="dropdownMenuLinkClient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-user-o"></em> Clientes </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkClient" style="top:auto; padding: 0px; width: 100%;">
+                        <div class="nav-item"><a class="nav-link" href="#" data-toggle="collapse" data-target="#menuclient" data-parent="#sidenav01" class="collapsed"><em class="fa fa-user-o"></em> Clientes </a>
+                            <div id="menuclient" class="collapse"  aria-labelledby="dropdownMenuLink" style="top:auto; padding: 0px; width: 100%;">
                                 <li class="nav-item"><a class="nav-link" href="/clientes">Nuevo</a></li>
                                 <!--li class="pointerCur"><a class="nav-link dropdown-item" href="/clientes/list">Listar</a></li>
                                 <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
@@ -70,7 +70,12 @@
                         </div>
                         <div class="nav-item"><a class="nav-link" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-envelope"></em> Enviados </a>
                         </div>
-                        <div class="nav-item"><a class="nav-link" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em> Parametros </a>
+                        <div class="nav-item"><a class="nav-link" href="#" data-toggle="collapse" data-target="#menuparam" data-parent="#sidenav01" class="collapsed"><em class="fa fa-cog"></em> Parametros </a>
+                            <div id="menuparam" class="collapse" aria-labelledby="dropdownMenuLinkParam" style="top:auto; padding: 0px; width: 100%;">
+                                <li class="nav-item"><a class="nav-link" href="/params-sms">SMS</a></li>
+                                <!--li class="pointerCur"><a class="nav-link dropdown-item" href="/clientes/list">Listar</a></li>
+                                <!--li><a class="nav-link dropdown-item" href="#">Something else here</a></li-->
+                            </div>
                         </div>
                         <!--li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li-->
                         <!--li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li-->
@@ -128,7 +133,10 @@
                 </header>
                 
                 <section class="row">
-                    <div class="col-sm-12">
+                <!--section class="row" style="background: url(./images/fidelio1.png);
+                    opacity: 0.5;
+                    "-->
+                    <div class="col-sm-12" style="opacity: 1;">
                         <section class="row" style="">
                             <div class="col-md-12 col-lg-12">
                                 <div class="" style="margin-left: 20px;">

@@ -10,6 +10,7 @@ use BulkSms;
 use App\venta;
 use App\cliente;
 use App\envio;
+use App\param;
 use Illuminate\Support\Facades\Auth;
 ///require_once(envioController);
 
@@ -32,22 +33,31 @@ class alertasController extends Controller
     ##$clientproxvencer = 
     public function sendsms(Request $request)
     {
+
+
         $username = 'SistematizarLTDA';
         $password = 'stzEF3798';
         $header = "Basic " . base64_encode($username . ":" . $password);
+
 
         $consult = venta::where('id', $request->all()['id'])->first();
 
         $consClient = cliente::where('id', $consult->clientes_idClientes)->first();
         //var_dump($consult->cliente->nombresClientes);exit();
         $user = Auth::user();
+        $param = "'" . $user->negocio->confsms . "'";
+        $parametros = array("NAME_CLIEN" => $consult->cliente->nombresClientes,"NAME_NEGO" => $user->negocio->nombreNegocios,"PRODUC_COMP"=>$consult->tipoproducto->nombreTipoProductos,"DATE_VEN"=>$consult->fechaVencimiento, "NUM_PHONE2" => $consult->cliente->celular2, "DATE_COMP" => $consult->fechaVentas, "NUM_PHONE1" => $consult->cliente->celular1);
+        
 
+        foreach ($parametros as $key => $parametro) {
+          $param = str_replace($key,$parametro, $param);
+          var_dump($param);
+        }
+        exit();
 
-        $text = $user->negocio->nombreNegocios . ' le recuerda Sr(a) ' . $consult->cliente->nombresClientes . ' que su ' . $consult->tipoproducto->nombreTipoProductos . ' se encuentra para vencer el: ' . $consult->fechaVencimiento . ' comuniquese al '. $user->negocio->telefono;
+        $text = $param;
 
         $to = '57' . $consult->cliente->celular1 ;
-
-
 
         $curl = curl_init();
 
@@ -72,13 +82,20 @@ class alertasController extends Controller
 
         curl_close($curl);
 
+        $countError = envio::where('respuestaEnvio', "0")->count();
+        $countSucc = envio::where('respuestaEnvio', '1')->count();
 
         if ($err) {
           $this->saveenvio('1', $consult->id, '0');
+          return response()->json([
+            array("errors_form" => $messages),400,
+            'countError' => $countError
+          ]);
         } else {
           $this->saveenvio('1', $consult->id, '1');
           return response()->json([
-            'success' => 'Mensajes Enviado al numero $57 ' . $consult->cliente->celular1
+            'success' => 'Mensajes Enviado al numero $57 ' . $consult->cliente->celular1,
+            'countSucc' => $countSucc
           ]);
         }
 

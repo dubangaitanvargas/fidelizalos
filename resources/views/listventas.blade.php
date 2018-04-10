@@ -60,43 +60,36 @@
 	<div>
 		<!--label><input type="checkbox" name="allselect"> Seleccionar todos </label-->
 	</div>
-	<div class="col-md-12 col-offset-2" style="margin-top: 20px;" id="list">
-		<div>
-			<div class="col-lg-3 col-md-6" style="float:right;">
-                    <!--<div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-commenting fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>SMS Fallidos</div>
-                                </div>
-                            </div>
+	<div class="col-md-12 col-offset-2" style="margin-top:0px;" id="list">
+		<!---div  style="">
+			<div class="col-md-2 col-sm-4" style="float:right; display: inline-flex;">
+				<div style="background-color: rgba(255,236,51,0.7); border-radius: 10px; padding-right: 20px; padding-top: 10px; padding-left: 10px; margin-bottom: 20px">
+					<div class="row" style="display:inline-flex;">
+                        <div class="col-xs-2">
+                            <i class="fa fa-commenting fa-2x"></i>
                         </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div> -->
-                    <!--<div>
-                    	<button></button>
-                    </div>-->
-            </div>
-			<!--<div>
-				<label>Enviados</label>
-				<em class="fa fa-commenting" style="color:blue;"></em>
+                        <div class="col-xs-6 text-right">
+                            <div class="">[[ countError ]]</div>
+                            <div>SMS Fallidos</div>
+                        </div>
+                    </div>
+				</div>
 			</div>
-			<div>
-				<label>Error Sms</label>
-				<em class="fa fa-commenting" style="color:red; font-size: 150%;"></em>
-			</div>-->
+			<div class="col-md-2 col-sm-4" style="float:right; display: inline-flex;">
+				<div style="background-color: rgba(115,118,223,0.6); border-radius: 10px; padding-right: 20px; padding-top: 10px; padding-left: 10px; margin-bottom: 20px">
+					<div class="row" style="display:inline-flex;">
+                        <div class="col-xs-2">
+                            <i class="fa fa-commenting fa-2x"></i>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <div class="">[[ countSucc ]]</div>
+                            <div>SMS Enviados</div>
+                        </div>
+                    </div>
+				</div>
+			</div>
 		</div>
-		<div>
+		<div-->
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
@@ -134,6 +127,11 @@
 	<script type="text/javascript">
 		new Vue({
 			el:'#list',
+			delimiters: ['[[', ']]'],
+			data:{
+				countError : '',
+				countSucc : ''
+			},
 			methods:{
 				sendsms: function(e){
 					$id = e;
@@ -142,10 +140,13 @@
 					})
 					.then(
 						response => {
+							this.countError = response.data['countError'];
+							this.countSucc = response.data['countSucc'];
 							alert(response.data['success']);
+
 					})
 				}
-			},
+			}
 		})
 	</script>
 @endsection

@@ -24,7 +24,7 @@ Route::post('/ventas/recarg', 'ventasController@home')->middleware(['auth', 'aut
 
 Route::post('/ventas/obtfechVenc', 'ventasController@obtfechVenc')->middleware(['auth', 'authNegocio']);
 
-Route::get('/ventas/list', 'ventasController@listVent')->middleware(['auth', 'authNegocio']);
+Route::get('/ventas-list', 'ventasController@listVent')->middleware(['auth', 'authNegocio']);
 
 Route::post('/alert/only', 'alertasController@sendsms')->middleware(['auth', 'authNegocio']);
 
@@ -47,3 +47,6 @@ Route::post('/client/search', 'clienteController@search');
 Route::post('/client/searchList', 'clienteController@searchList');
 
 Route::auth();
+
+Route::get('/params-sms', 'negocioController@paramSMS')->middleware(['auth']);
+Route::post('/params/smssave', 'negocioController@smsSave')->middleware(['auth']);

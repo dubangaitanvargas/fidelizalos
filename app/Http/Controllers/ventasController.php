@@ -9,6 +9,7 @@ use App\cliente;
 use App\tipoproducto;
 use App\venta;
 use App\negocio;
+use App\envio;
 use App\Http\Requests;
 use App\Http\Requests\createVentasRequest;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class ventasController extends Controller
     	$clientes = cliente::all();
         $tipoProductos = tipoproducto::all();
         $negocio = negocio::all();
+
 
         return view('ventas', [
             'clientes' => $clientes,
@@ -159,9 +161,13 @@ class ventasController extends Controller
 
     public function listVent(){
 
+        $countError = envio::where('respuestaEnvio', "0")->count();
+        $countSucc = envio::where('respuestaEnvio', '1')->count();
         $result = venta::where('negocios_idNegocios', (Auth::user()->Negocios_idNegocios))->get();
         return view('listventas',[
-            'ventas' => $result
+            'ventas' => $result,
+            'countError' => $countError,
+            'countSucc' => $countSucc
         ]);
     }
 }
