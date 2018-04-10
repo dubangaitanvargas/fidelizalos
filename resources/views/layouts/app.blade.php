@@ -9,9 +9,9 @@
     
     <meta name="author" content="">
     
-    <link rel="icon" href="./images/fidelio3.png">
+    <link rel="icon" href="./images/fidelo3.png">
 
-    <title>Fidelio</title>
+    <title>Fidelo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -45,7 +45,7 @@
         <div class="row" id="menu">
 
             <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-                <h1 class="site-title"><a href="/"><img src="./images/fidelio2.png" width="100%;" height="60px;"> </a></h1>
+                <h1 class="site-title"><a href="/"><img src="./images/fidelo2.png" width="100%;" height="60px;"> </a></h1>
                 @if (Auth::guest())
                     
                 @else
@@ -133,11 +133,11 @@
                 </header>
                 
                 <section class="row">
-                <!--section class="row" style="background: url(./images/fidelio1.png);
+                <!--section class="row" style="background: url(./images/fidelo1.png);
                     opacity: 0.5;
                     <div class="col-sm-12" style="opacity: 1;">
                         <section class="row" style="">
-                    "--> <img src="./images/fidelio1.png" style="position:fixed ;top:50%; left:50%;transform: translate(-50%, -50%);opacity: 0.3; width:30%; height:30%;z-index:-997">
+                    "--> <img src="./images/fidelo1.png" style="position:fixed ;top:50%; left:50%;transform: translate(-50%, -50%);opacity: 0.3; width:30%; height:30%;z-index:-997">
                             <div class="col-md-12 col-lg-12">
                                 <div class="" style="margin-left: 20px;">
                                 @yield('content')
