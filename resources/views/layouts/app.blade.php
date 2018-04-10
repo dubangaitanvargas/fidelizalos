@@ -137,7 +137,7 @@
                     opacity: 0.5;
                     <div class="col-sm-12" style="opacity: 1;">
                         <section class="row" style="">
-                    "--> <img src="./images/fidelio1.png" style="position:fixed ;top:50%; left:50%;transform: translate(-50%, -50%);opacity: 0.4; width:30%; height:30%;z-index:-997">
+                    "--> <img src="./images/fidelio1.png" style="position:fixed ;top:50%; left:50%;transform: translate(-50%, -50%);opacity: 0.3; width:30%; height:30%;z-index:-997">
                             <div class="col-md-12 col-lg-12">
                                 <div class="" style="margin-left: 20px;">
                                 @yield('content')
